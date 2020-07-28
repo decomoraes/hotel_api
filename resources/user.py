@@ -3,6 +3,8 @@ from models.user import UserModel
 
 
 class Users(Resource):
+
+    
     def get(self):
         return {'Todos os Usuários': [user.json() for user in UserModel.query.all()]}
 
