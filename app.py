@@ -11,9 +11,11 @@ app.config['JWT_SECRET_KEY'] = 'DontTellAnyone'
 api = Api(app)
 jwt = JWTManager(app)
 
+
 @app.before_first_request
 def cria_banco():
     base.create_all()
+
 
 api.add_resource(Hotels, '/hotels')
 api.add_resource(Hotel, '/hotel/<string:hotel_id>')
