@@ -17,8 +17,8 @@ class Users(Resource):
 class User(Resource):
 
 
-    def get(self, user_id):
-        user = UserModel.find_user(user_id)
+    def get(self, username):
+        user = UserModel.find_username(username)
         if user is not None:
             return user.json()
         return {'message': 'User not found'}, 404 # not found
@@ -57,7 +57,7 @@ class UserLogin(Resource):
     @classmethod
     def post(cls):
         dados = atributos.parse_args()
-        user = UserModel.find_user(dados['username'])
+        user = UserModel.find_username(dados['username'])
 
         if user and safe_str_cmp(user.password, dados['password']):
             token_de_acesso = create_access_token(identity = user.user_id)
