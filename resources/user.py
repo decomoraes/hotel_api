@@ -14,7 +14,7 @@ class Users(Resource):
         return {'Todos os Usuários': [user.json() for user in UserModel.query.all()]}
 
 
-class User(Resource):
+class User(Resource): 
 
 
     def get(self, username):
